@@ -103,7 +103,6 @@ makeCacheMatrix <- function(x = matrix()) {
 ## inverse of the matrix.
 cacheSolve <- function(x, ...) {
 
-		## Return a matrix that is the inverse of 'x'
 		## call getmatrix from the context of x in the global environment
 		## note here that m is not the value in the global environment,
 		## it's local (I think)
@@ -125,7 +124,6 @@ cacheSolve <- function(x, ...) {
 		## now set the inverse matrix in the global environment
 		x$setmatrix(m)
 		
-		## return m -- note it's the same value as what is in the
-		## global environment
+		## Return the inverse of 'x'
 		m
 }
