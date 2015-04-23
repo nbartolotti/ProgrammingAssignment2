@@ -1,6 +1,6 @@
 ## Functions that calculate the inverse of a matrix and stores it in the global environment.
 ##
-## Example of a square matrix that can be inverted and used for this as a test
+## Example of a square matrix that can be inverted and used for this as a test:
 ##
 ## a<-matrix(c(1,1,4,0,3,1,4,4,0),nrow=3,ncol=3)
 ## a
@@ -23,7 +23,7 @@
 ## [2,]    1    3    4
 ## [3,]    4    1    0
 ##
-## Example of using the same matrix with the cachedmatrix code
+## Example of using the same matrix with the cachedmatrix code:
 ##
 ## a<-matrix(c(1,1,4,0,3,1,4,4,0),nrow=3,ncol=3)
 ## matrix<-makeCacheMatrix(a)
@@ -43,13 +43,15 @@
 ## [3,]    4    1    0
 ## > matrix.nick<-makeCacheMatrix(a)
 ## > cacheSolve(matrix.nick)
-######## Note: here the matrix is cached into the global environment so we DO NOT see the line ######## "getting cached data" before the inverse matrix is displayed
+#### Note: here the matrix is cached into the global environment so we DO NOT
+#### see the line "getting cached data" before the inverse matrix is displayed
 ##             [,1]        [,2]    [,3]
 ## [1,]  0.08333333 -0.08333333  0.2500
 ## [2,] -0.33333333  0.33333333  0.0000
 ## [3,]  0.22916667  0.02083333 -0.0625
 ## > cacheSolve(matrix.nick)
-######## Note: here the matrix is retrieved from the global environment so we DO see the line ######## "getting cached data" before the inverse matrix is displayed
+#### Note: here the matrix is retrieved from the global environment so we DO 
+#### see the line "getting cached data" before the inverse matrix is displayed
 ## getting cached data
 ##             [,1]        [,2]    [,3]
 ## [1,]  0.08333333 -0.08333333  0.2500
