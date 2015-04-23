@@ -1,4 +1,4 @@
-## Functions that calculate the inverse of a matrix and stores it in the global environment.
+## Functions that calculate the inverse of a matrix and store it in the global environment.
 ##
 ## Example of a square matrix that can be inverted and used for this as a test:
 ##
@@ -65,36 +65,36 @@ makeCacheMatrix <- function(x = matrix()) {
 
 		## set the matrix to null
 		m <- NULL
-	
+
 		## define the set function
 		## by virtue of the <<- operator the variables x and m are searched for
 		## in parent environments.  If found they are reassigned.  if not they are
 		## created in the global environment. The matrix y is assigned to x in
 		## the global environment and m is effectively reset
-        set <- function(y) {
-                x <<- y
-                m <<- NULL
-        }
+		set <- function(y) {
+			x <<- y
+			m <<- NULL
+		}
 		
 		## define the get function.
 		## because <<- was used prior to this definition the reference to x
 		## is in the global environment
-        get <- function() x
+		get <- function() x
 		
 		## define the setmatrix function
 		## the argument matrix is assigned to m which is in the global environment
 		## this is a little confusing because matrix is a function in the base
 		## namespace but here it is just a variable
-        setmatrix <- function(matrix) m <<- matrix
+		setmatrix <- function(matrix) m <<- matrix
 		
 		## define the getmatrix function
 		## returns m from the global environment
-        getmatrix <- function() m
+		getmatrix <- function() m
 		
 		## return a named list that contains the functions
-        list(set = set, get = get,
-             setmatrix = setmatrix,
-             getmatrix = getmatrix)
+		list(set = set, get = get,
+			setmatrix = setmatrix,
+			getmatrix = getmatrix)
 	
 }
 
@@ -103,29 +103,29 @@ makeCacheMatrix <- function(x = matrix()) {
 ## inverse of the matrix.
 cacheSolve <- function(x, ...) {
 
-        ## Return a matrix that is the inverse of 'x'
+		## Return a matrix that is the inverse of 'x'
 		## call getmatrix from the context of x in the global environment
 		## note here that m is not the value in the global environment,
 		## it's local (I think)
-        m <- x$getmatrix()
+		m <- x$getmatrix()
 		
 		## if it is defined inform the user that the cached value
 		## was referenced and return it
-        if(!is.null(m)) {
-                message("getting cached data")
-                return(m)
-        }
+		if(!is.null(m)) {
+			message("getting cached data")
+			return(m)
+		}
 		
 		## otherwise get the matrix from x in the global context
-        data <- x$get()
+		data <- x$get()
 		
 		## then solve the inverse of x
-        m <- solve(data)
+		m <- solve(data)
 		
 		## now set the inverse matrix in the global environment
-        x$setmatrix(m)
+		x$setmatrix(m)
 		
 		## return m -- note it's the same value as what is in the
 		## global environment
-        m
+		m
 }
