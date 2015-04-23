@@ -1,15 +1,19 @@
 ## Functions that calculate the inverse of a matrix and store it in the global environment.
 ##
-## Example of a square matrix that can be inverted and used for this as a test:
+## Example of a square matrix that can be inverted and used in this assignment as a test:
 ##
 ## a<-matrix(c(1,1,4,0,3,1,4,4,0),nrow=3,ncol=3)
+##
+## Show the matrix:
+##
 ## a
 ##      [,1] [,2] [,3]
 ## [1,]    1    0    4
 ## [2,]    1    3    4
 ## [3,]    4    1    0
 ##
-## Invert it:
+## Invert it using solve():
+##
 ## solve(a)
 ##             [,1]        [,2]    [,3]
 ## [1,]  0.08333333 -0.08333333  0.2500
@@ -17,6 +21,7 @@
 ## [3,]  0.22916667  0.02083333 -0.0625
 ##
 ## Invert it again to show it's invertable:
+##
 ## solve(solve(a))
 ##      [,1] [,2] [,3]
 ## [1,]    1    0    4
@@ -26,13 +31,21 @@
 ## Example of using the same matrix with the cachedmatrix code:
 ##
 ## a<-matrix(c(1,1,4,0,3,1,4,4,0),nrow=3,ncol=3)
-## matrix<-makeCacheMatrix(a)
-## cacheSolve(matrix)
-## -- sets m to the matrix a as shown above
-## cacheSolve(matrix)
-## -- retrieves m from the global environment
 ##
-## Actual output of this set of functions from the R console:
+## Cache it:
+##
+## matrix<-makeCacheMatrix(a)
+## 
+## Solve the inverse of the matrix (note this call sets the cache):
+##
+## cacheSolve(matrix)
+## 
+## Solve the inverse of the matrix again (note this call retrieves the cache):
+## 
+## cacheSolve(matrix)
+##
+## The following is actual output of the makeCacheMatrix and cacheSolve functions
+## collected from the R console:
 ##
 ## a<-matrix(c(1,1,4,0,3,1,4,4,0),nrow=3,ncol=3)
 ## > source("cachematrix.R")
@@ -43,15 +56,17 @@
 ## [3,]    4    1    0
 ## > matrix.nick<-makeCacheMatrix(a)
 ## > cacheSolve(matrix.nick)
-#### Note: here the matrix is cached into the global environment so we DO NOT
-#### see the line "getting cached data" before the inverse matrix is displayed
+## Note: here the matrix is cached into the global environment so we DO NOT
+## see the line "getting cached data" before the inverse matrix is displayed
+##
 ##             [,1]        [,2]    [,3]
 ## [1,]  0.08333333 -0.08333333  0.2500
 ## [2,] -0.33333333  0.33333333  0.0000
 ## [3,]  0.22916667  0.02083333 -0.0625
 ## > cacheSolve(matrix.nick)
-#### Note: here the matrix is retrieved from the global environment so we DO 
-#### see the line "getting cached data" before the inverse matrix is displayed
+## Note: here the matrix is retrieved from the global environment so we DO 
+## see the line "getting cached data" before the inverse matrix is displayed
+##
 ## getting cached data
 ##             [,1]        [,2]    [,3]
 ## [1,]  0.08333333 -0.08333333  0.2500
